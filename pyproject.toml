@@ -1,7 +1,7 @@
 [project]
 name = "expense-tracker"
 version = "0.1.0"
-description = "Add your description here"
+description = "this is my first fastapi project"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = []

@@ -8,27 +8,28 @@ from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/users",tags=["users"])
 
-@router.get("/")
+
+@router.get("/", response_model=list[UserCreate])
 async def get_all_users(db: Session = Depends(get_db)):
     return crud_user.get_all_user(db=db)
 
 
-@router.get("/{user_id}")
+@router.get("/{user_id}", response_model=UserCreate)
 async def get_user_by_id(id:int, db: Session = Depends(get_db)):
     return crud_user.get_user_by_id(db,user_id= id)
 
 
-@router.post("/")
+@router.post("/",response_model=UserCreate)
 async def create_user(user_create: UserCreate, db: Session = Depends(get_db)):
     return crud_user.create_user(db,user_create)
 
 
-@router.delete("/{user_id}")
+@router.delete("/{user_id}",response_model=UserCreate)
 async def delete_user(id:int,db: Session = Depends(get_db)):
     return crud_user.delete_user(db, user_id = id)
 
 
-@router.put("/{user_id}")
+@router.put("/{user_id}",response_model=UserCreate)
 async def update_user(id: int, user_update: UserCreate,db: Session = Depends(get_db)):
     db_user = crud_user.update_user(db ,user_id = id, user = user_update)
 

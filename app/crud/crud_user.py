@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from app.schemas.user import UserCreate
 from app.models.user import User
 from fastapi import HTTPException
+from app.core.security.hashHelper import HashHelper
 
 def get_all_user(db:Session):
     get_users = db.query(User).all()
@@ -14,7 +15,8 @@ def get_user_by_id(db:Session, user_id:int):
 
 
 def create_user(db:Session, user: UserCreate):
-    db_user = User(username=user.username, mail=user.mail, hashed_password=user.hashed_password)
+    hashed_pwd = HashHelper.hash_password(user.password)
+    db_user = User(username=user.username, mail=user.mail, password=hashed_pwd)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -29,7 +31,6 @@ def delete_user(db:Session, user_id: int):
 
     db.delete(deleted_user)
     db.commit()
-    db.refresh(deleted_user)
     return deleted_user
 
 def update_user(db:Session,user_id:int, user: UserCreate):
@@ -38,8 +39,10 @@ def update_user(db:Session,user_id:int, user: UserCreate):
     if db_user:
         db_user.username = user.username
         db_user.mail = user.mail
-        db_user.hashed_password = user.hashed_password
+        db_user.password = HashHelper.hash_password(user.password)
         db.add(db_user)
         db.commit()
         db.refresh(db_user)
-    return db_user
+        return db_user
+
+    raise HTTPException(status_code=404, detail="User not found")
