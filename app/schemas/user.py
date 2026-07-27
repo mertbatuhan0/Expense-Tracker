@@ -10,7 +10,7 @@ class UserOut(UserCreate):
     email: str
 
     class Config:
-        from_attibutes = True
+        from_attributes= True
 
 class UserUpdate(BaseModel):
     username: str

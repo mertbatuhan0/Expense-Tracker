@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from app.schemas.user import UserCreate
 from app.models.user import User
 from fastapi import HTTPException
-from app.core.security.hashHelper import HashHelper
+
 
 def get_all_user(db:Session):
     get_users = db.query(User).all()
@@ -15,8 +15,7 @@ def get_user_by_id(db:Session, user_id:int):
 
 
 def create_user(db:Session, user: UserCreate):
-    hashed_pwd = HashHelper.hash_password(user.password)
-    db_user = User(username=user.username, mail=user.mail, password=hashed_pwd)
+    db_user = User(username=user.username, mail=user.mail, password=user.password)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
