@@ -1,13 +1,15 @@
-💰 Expense-Tracker API
-This project is a modern and fast backend service developed using FastAPI to help you track your expenses.
 
-🚧 Note: This project is currently under active development.
+💸 Expense Tracker API
+A simple and fast RESTful API built with FastAPI, SQLAlchemy, and SQLite to manage personal expenses.
 
-🚀 Technologies
-Python (3.14)
-FastAPI
-SQLAlchemy (for database operations)
-uv (for package management)
+🚧 Status: Under Active Development
+🚀 Today's Update
+Added JWT Authentication (login & register).
+Secured /expenses/ endpoints using OAuth2 Bearer tokens.
+Linked all expense records directly to the authenticated user ID.
 
-📝 About
-This project is being developed to practice backend architecture, CRUD operations, and API design. Since it is a work in progress, new features are being added regularly.
+🛠️ Tech Stack
+Framework: FastAPI
+Database: SQLite & SQLAlchemy ORM
+Auth: PyJWT & Passlib
+Validation: Pydantic
