@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from app.api.endpoints import users, expenses,auth
+from app.api.endpoints import expenses, users, auth
 from app.db.database import engine, Base
+import app.models
 
 Base.metadata.create_all(engine)
 
