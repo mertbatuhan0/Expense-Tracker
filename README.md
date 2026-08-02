@@ -1,15 +1,12 @@
+🎯 Expense Tracker API
+A simple and fast RESTful API built with FastAPI, SQLAlchemy, and PostgreSQL to manage personal expenses.
 
-💸 Expense Tracker API
-A simple and fast RESTful API built with FastAPI, SQLAlchemy, and SQLite to manage personal expenses.
-
-🚧 Status: Under Active Development
-🚀 Today's Update
-Added JWT Authentication (login & register).
-Secured /expenses/ endpoints using OAuth2 Bearer tokens.
-Linked all expense records directly to the authenticated user ID.
+🚧 Status: Under Active Development 🚀
+Recent updates: Migrated database from SQLite to PostgreSQL. Added Alembic for database migrations. JWT Authentication (login & register) securing /expenses endpoints using OAuth2 Bearer tokens.
 
 🛠️ Tech Stack
 Framework: FastAPI
-Database: postgresql & SQLAlchemy ORM
+Database: PostgreSQL & SQLAlchemy ORM
+Migrations: Alembic
 Auth: PyJWT & Passlib
 Validation: Pydantic
