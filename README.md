@@ -10,6 +10,6 @@ Linked all expense records directly to the authenticated user ID.
 
 🛠️ Tech Stack
 Framework: FastAPI
-Database: SQLite & SQLAlchemy ORM
+Database: postgresql & SQLAlchemy ORM
 Auth: PyJWT & Passlib
 Validation: Pydantic

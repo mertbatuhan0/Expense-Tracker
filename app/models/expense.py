@@ -3,7 +3,6 @@ from sqlalchemy.sql.schema import ForeignKey
 from app.db.database import Base
 from sqlalchemy import Column, Integer,String
 
-#we are using models for database tables
 
 class Expense(Base):
     __tablename__ = "expenses"

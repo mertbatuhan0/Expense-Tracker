@@ -17,8 +17,7 @@ async def login(user_credentials:UserInLogin, db: Session = Depends(get_db)):
 
    if not verify(user_credentials.password, user.password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="Invalid credentials")
-   #create a token
-   #return token
+
    access_token  = authHandler.create_access_token(data={"user_id":user.id})
    return {"access_token":access_token, "token_type":"bearer"}
 
