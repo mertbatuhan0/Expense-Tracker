@@ -11,14 +11,16 @@ A simple and fast RESTful API built with FastAPI, SQLAlchemy, and PostgreSQL to 
 - Linked all expense records directly to the authenticated user ID
 - Added pagination (`skip`, `limit`) to the expenses listing endpoint
 - Added filtering by amount range (`min_value`, `max_value`) and title search
+- Added pytest test coverage for auth and expense endpoints
 
 ## 🛠️ Tech Stack
 
 - **Framework:** FastAPI
 - **Database:** PostgreSQL & SQLAlchemy ORM
 - **Migrations:** Alembic
-- **Auth:** PyJWT & Passlib
+- **Auth:** PyJWT & Passlib (bcrypt)
 - **Validation:** Pydantic
+- **Testing:** pytest & httpx
 
 ## 📌 Features
 
@@ -30,10 +32,19 @@ A simple and fast RESTful API built with FastAPI, SQLAlchemy, and PostgreSQL to 
   - `min_value` / `max_value` — filter by amount range
   - `title` — search by expense title
 
-## 🔜 Coming Soon
+## 🧪 Running Tests
 
-- Refresh token support
-- pytest test coverage
-- Docker support
-- CI/CD with GitHub Actions
-- AWS deployment
+This project uses `pytest` for automated testing, covering both authentication and expense endpoints (including JWT-protected routes).
+
+```bash
+pip install pytest httpx
+pytest
+```
+
+Test files are located under `app/tests/`:
+- `test_auth.py` — registration & login tests
+- `test_expenses.py` — expense creation tests (with and without authentication)
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the project root with:
