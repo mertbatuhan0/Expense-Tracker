@@ -10,7 +10,7 @@ from sqlalchemy import pool
 from alembic import context
 
 from app.db.database import Base
-import app.models
+
 
 config = context.config
 

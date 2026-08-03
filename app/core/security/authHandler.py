@@ -24,17 +24,12 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         print("User ID:", user_id)
 
         if user_id is None:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Payload user_id / no sub"
-            )
+            raise HTTPException( status_code=status.HTTP_401_UNAUTHORIZED, detail="Payload user_id / no sub")
         return user_id
+
     except Exception as e:
         print("JWT Decode error:", e)
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=f"invalid token: {str(e)}"
-        )
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"invalid token: {str(e)}")
 
 def create_access_token(data: dict):
     to_encode = data.copy()
