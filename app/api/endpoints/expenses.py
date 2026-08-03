@@ -1,4 +1,7 @@
-from typing import List
+from typing import List, Optional
+from unittest import skip
+
+import optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.db.database import get_db
@@ -10,10 +13,15 @@ router = APIRouter(prefix="/expenses", tags=["expenses"])
 
 @router.get("/", response_model=List[ExpenseOut])
 async def get_all_expenses(
-    db: Session = Depends(get_db),
-    current_user_id: str = Depends(get_current_user)
+        db: Session = Depends(get_db),
+        skip: int = 0,
+        limit: int = 5,
+        max_value: Optional[int] = None,
+        min_value: Optional[int] = None,
+        title: Optional[str] = None,
+        current_user_id: str = Depends(get_current_user)
 ):
-    return crud_expense.get_all_expenses(db=db, user_id=current_user_id)
+    return crud_expense.get_all_expenses(db=db, user_id=current_user_id, skip=skip, limit=limit, max_value=max_value, min_value=min_value, title=title)
 
 
 @router.get("/{id}", response_model=ExpenseOut)

@@ -3,8 +3,27 @@ from fastapi import HTTPException, status
 from app.models.expense import Expense
 from app.schemas.expense import ExpenseCreate
 
-def get_all_expenses(db: Session, user_id: str):
-    return db.query(Expense).filter(Expense.user_id == user_id).all()
+def get_all_expenses(
+        db: Session,
+        user_id: str,
+        skip: int = 0,
+        limit: int = 5,
+        max_value: Optional[int] = None,
+        min_value: Optional[int]= None,
+        title: Optional[str] = None):
+    query = db.query(Expense).filter(Expense.user_id == user_id)
+
+    if min_value is not None:
+        query = query.filter(Expense.amount >= min_value)
+
+    if max_value is not None:
+        query = query.filter(Expense.amount <= max_value)
+
+    if title is not None:
+        query = query.filter(Expense.title == title)
+
+    return query.offset(skip).limit(limit).all()
+
 
 def get_expense_by_id(db: Session, expense_id: int, user_id: str):
     return db.query(Expense).filter(Expense.id == expense_id, Expense.user_id == user_id).first()
