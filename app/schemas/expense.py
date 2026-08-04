@@ -10,7 +10,7 @@ class ExpenseOut(BaseModel):
     amount: int
 
     class Config:
-        from_attibutes = True
+        from_attributes = True
 
 
 

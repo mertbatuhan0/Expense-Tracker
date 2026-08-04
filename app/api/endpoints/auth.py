@@ -26,8 +26,10 @@ async def login(user_credentials:UserInLogin, db: Session = Depends(get_db)):
 async def signup(user_signup: UserCreate, db: Session = Depends(get_db)):
    hashed_password = hashHelper.hash(user_signup.password)
    new_user = User(mail=user_signup.mail,username=user_signup.username,password=hashed_password)
+
    db.add(new_user)
    existing_user = db.query(User).filter(User.mail == user_signup.mail).first()
+
    if existing_user:
       raise HTTPException(status_code=400, detail="User already exists")
 
