@@ -32,14 +32,7 @@ A simple and fast RESTful API built with FastAPI, SQLAlchemy, and PostgreSQL to 
   - `min_value` / `max_value` — filter by amount range
   - `title` — search by expense title
 
-## 🧪 Running Tests
 
-This project uses `pytest` for automated testing, covering both authentication and expense endpoints (including JWT-protected routes).
-
-```bash
-pip install pytest httpx
-pytest
-```
 
 Test files are located under `app/tests/`:
 - `test_auth.py` — registration & login tests
