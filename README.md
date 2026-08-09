@@ -24,6 +24,14 @@ A lightweight, modern, and production-ready RESTful API built with **FastAPI**, 
 
 ---
 
+## 🧪 Testing (pytest)
+
+This project uses `pytest` with shared fixtures defined in `conftest.py` to avoid repeating setup code across test files.
+
+### Structure
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
