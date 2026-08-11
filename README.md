@@ -42,9 +42,4 @@ Make sure you have the following installed on your machine:
 
 ---
 
-### 🏃 Quick Run with Docker Compose
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/mertbatuhan0/Expense-Tracker.git](https://github.com/mertbatuhan0/Expense-Tracker.git)
-   cd Expense-Tracker
