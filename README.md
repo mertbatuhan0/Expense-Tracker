@@ -1,43 +1,45 @@
-# 🎯 Expense Tracker API
+# 💸 Expense Tracker API
 
-A simple and fast RESTful API built with FastAPI, SQLAlchemy, and PostgreSQL to manage personal expenses.
+A lightweight, modern, and production-ready RESTful API built with **FastAPI**, **PostgreSQL**, **SQLAlchemy**, and **Docker**. This project handles user authentication via **JWT** and provides full CRUD functionality for tracking daily personal expenses.
 
-## 🚧 Status: Under Active Development 🚀
+---
 
-**Latest updates:**
-- Migrated database from SQLite to PostgreSQL
-- Added Alembic for database migrations
-- JWT Authentication (login & register) securing `/expenses` endpoints using OAuth2 Bearer tokens
-- Linked all expense records directly to the authenticated user ID
-- Added pagination (`skip`, `limit`) to the expenses listing endpoint
-- Added filtering by amount range (`min_value`, `max_value`) and title search
-- Added pytest test coverage for auth and expense endpoints
+## ✨ Features
+
+* **Authentication & Authorization:** Secure user registration and login using JWT tokens and password hashing (Passlib/Bcrypt).
+* **Expense Management:** Create, read, update, and delete expenses tied to authenticated users.
+* **Database ORM:** Structured data handling using **SQLAlchemy** with **PostgreSQL**.
+* **Containerized Deployment:** Fully Dockerized setup using `Dockerfile` and `docker-compose` for easy spin-up.
+* **Interactive API Docs:** Built-in Swagger UI and ReDoc interface powered by FastAPI.
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Framework:** FastAPI
-- **Database:** PostgreSQL & SQLAlchemy ORM
-- **Migrations:** Alembic
-- **Auth:** PyJWT & Passlib (bcrypt)
-- **Validation:** Pydantic
-- **Testing:** pytest & httpx
+* **Backend Framework:** FastAPI (Python 3.11+)
+* **Database:** PostgreSQL
+* **ORM & Migrations:** SQLAlchemy
+* **Authentication:** PyJWT / OAuth2 Password Bearer
+* **Containerization:** Docker & Docker Compose
 
-## 📌 Features
+---
 
-- User registration & login with JWT authentication
-- Create, read, update, and delete expenses
-- Expenses are scoped to the authenticated user
-- Pagination support (`GET /expenses/?skip=0&limit=10`)
-- Filtering support:
-  - `min_value` / `max_value` — filter by amount range
-  - `title` — search by expense title
+## 🧪 Testing (pytest)
+
+This project uses `pytest` with shared fixtures defined in `conftest.py` to avoid repeating setup code across test files.
+
+### Structure
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+* [Git](https://git-scm.com/)
+
+---
 
 
-
-Test files are located under `app/tests/`:
-- `test_auth.py` — registration & login tests
-- `test_expenses.py` — expense creation tests (with and without authentication)
-
-## ⚙️ Environment Variables
-
-Create a `.env` file in the project root with:
