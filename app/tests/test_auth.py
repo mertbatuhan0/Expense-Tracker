@@ -1,25 +1,14 @@
-from starlette.testclient import TestClient
-from app.main import app
 
 
-client = TestClient(app)
+
+def test_signup(signup_user):
+  assert signup_user.status_code == 200
 
 
-def test_signup():
-    response = client.post("/auth/Signup",
-    json ={
-        "username":"test",
-        "mail":"test@gmail.com",
-        "password":"test",
-    })
+def test_login_without_token(login_without_token):
+  assert login_without_token.status_code == 422
 
-    assert response.status_code == 200
 
-def test_login():
-    response = client.post("/auth/Login",
-    json={
-        "mail":"test@gmail.com",
-        "password":"test",
-    })
-
-    assert response.status_code == 200
+def test_login_with_token(login_with_token):
+  assert "Authorization" in login_with_token
+  assert login_with_token["Authorization"].startswith("Bearer ")
